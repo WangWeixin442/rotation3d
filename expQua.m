@@ -40,6 +40,11 @@ end
 theta = sqrt(sum(v.^2));
 q = [cos(theta);v./theta.*sin(theta)];
 
+if ~isempty(find(theta==0,1))
+    q(:,theta==0) = [1;0;0;0];
+end
+
+% format result
 if tran
     q = q';
 end

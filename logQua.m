@@ -34,7 +34,7 @@ end
 % calculate log
 normQv = sqrt(sum(q(2:4,:).^2));
 u = q(2:4,:)./normQv;
-theta = atan2(normQv,q(1,:))*2;
+theta = wrapToPi(atan2(normQv,q(1,:))*2);
 
 % format result
 if strcmp(format,'q')

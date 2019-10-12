@@ -50,7 +50,7 @@ if isQuat
     att = zeros(4,N);
     att(:,1) = att0;
     for n = 2:N
-        att(:,n) = quaMul(att(:,n-1),dQ(:,n-1));
+        att(:,n) = mulQua(att(:,n-1),dQ(:,n-1));
     end
 else
     dR = expRot(omega*dt);

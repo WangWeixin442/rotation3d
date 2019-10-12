@@ -43,16 +43,22 @@ u = u./sqrt(sum(u.^2));
 theta = atan2(st,ct);
 
 % special cases
-ind0 = find(st==0 & ct==-1);
-theta(ind0) = pi;
+ind0 = find(st==0 & ct==1);
+if ~isempty(ind0)
+    theta(ind0) = 0;
+    u(:,ind0) = [1;0;0];
+end
 
-for i = 1:length(ind0)
-    if R(1,1,ind0(i))==1
-        u(:,ind0(i)) = [1;0;0];
-    elseif R(2,2,ind0(i))==1
-        u(:,ind0(i)) = [0;1;0];
-    elseif R(3,3,ind0(i))==1
-        u(:,ind0(i)) = [0;0;1];
+indpi = find(st==0 & ct==-1);
+theta(indpi) = pi;
+
+for i = 1:length(indpi)
+    if R(1,1,indpi(i))==1
+        u(:,indpi(i)) = [1;0;0];
+    elseif R(2,2,indpi(i))==1
+        u(:,indpi(i)) = [0;1;0];
+    elseif R(3,3,indpi(i))==1
+        u(:,indpi(i)) = [0;0;1];
     else
         error('something is wrong, check this fucntion');
     end
