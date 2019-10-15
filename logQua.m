@@ -36,6 +36,13 @@ normQv = sqrt(sum(q(2:4,:).^2));
 u = q(2:4,:)./normQv;
 theta = wrapToPi(atan2(normQv,q(1,:))*2);
 
+% identity
+indi = find(q(1,:)==1);
+if ~isempty(indi)
+    u(:,indi) = [1;0;0];
+    theta(indi) = 0;
+end
+
 % format result
 if strcmp(format,'q')
     v(2:4,:) = u.*theta/2;
