@@ -1,6 +1,7 @@
 function [ R ] = mulRot( R1, R2, checko )
 % calcualte the multiplication of two set of rotation matrics. R1 and R2
-% must be two 3-by-3-by-n matrices
+% must be two 3-by-3-by-n matrices, or one 3-by-3-by-1 matrix and one
+% 3-by-3-by-n matrix.
 % R returns a 3-by-3-by-n matrix
 % if checko==false (default), chech is the input matrices are orthogonal with
 % determinant one.
@@ -16,8 +17,8 @@ end
 if size(R2,1)~=3 || size(R2,2)~=3
     error('R2 must be of size 3-3-n');
 end
-if size(R1,3)~=size(R2,3)
-    error('R1 and R2 must have the same number of rotation matrices');
+if size(R1,3)~=size(R2,3) && size(R1,3)~=1 && size(R2,3)~=1
+    error('R1 and R2 must have the same number of rotation matrices, or one of them has only one matrix');
 end
 
 orthogonalTolerance = 1e-10;
