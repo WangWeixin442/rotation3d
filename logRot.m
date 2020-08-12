@@ -53,15 +53,9 @@ indpi = find(st==0 & ct==-1);
 theta(indpi) = pi;
 
 for i = 1:length(indpi)
-    if R(1,1,indpi(i))==1
-        u(:,indpi(i)) = [1;0;0];
-    elseif R(2,2,indpi(i))==1
-        u(:,indpi(i)) = [0;1;0];
-    elseif R(3,3,indpi(i))==1
-        u(:,indpi(i)) = [0;0;1];
-    else
-        error('something is wrong, check this fucntion');
-    end
+    IR = eye(3)+R(:,:,indpi(i));
+    u(:,indpi(i)) = IR(:,find(sum(IR.^2),1));
+    u(:,indpi(i)) = u(:,indpi(i))/sqrt(sum(u(:,indpi(i)).^2));
 end
 
 % format result
