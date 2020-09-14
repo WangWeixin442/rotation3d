@@ -61,12 +61,12 @@ end
 % format result
 if strcmp(format,'ss')
     V = zeros(3,3,size(R,3));
-    V(1,2,:) = -reshape(u(1,:).*theta,1,1,[]);
-    V(2,1,:) = reshape(u(1,:).*theta,1,1,[]);
+    V(1,2,:) = -reshape(u(3,:).*theta,1,1,[]);
+    V(2,1,:) = reshape(u(3,:).*theta,1,1,[]);
     V(1,3,:) = reshape(u(2,:).*theta,1,1,[]);
     V(3,1,:) = -reshape(u(2,:).*theta,1,1,[]);
-    V(2,3,:) = -reshape(u(3,:).*theta,1,1,[]);
-    V(3,2,:) = reshape(u(3,:).*theta,1,1,[]);
+    V(2,3,:) = -reshape(u(1,:).*theta,1,1,[]);
+    V(3,2,:) = reshape(u(1,:).*theta,1,1,[]);
 elseif strcmp(format,'v')
     V = u.*theta;
 else
