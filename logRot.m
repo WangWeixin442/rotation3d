@@ -43,13 +43,13 @@ u = u./sqrt(sum(u.^2));
 theta = atan2(st,ct);
 
 % special cases
-ind0 = find(st==0 & abs(ct-1)<1e-15);
+ind0 = find(st==0 & abs(ct-1)<1e-13);
 if ~isempty(ind0)
     theta(ind0) = 0;
     u(:,ind0) = [1;0;0];
 end
 
-indpi = find(st==0 & abs(ct+1)<1e-15);
+indpi = find(st==0 & abs(ct+1)<1e-13);
 theta(indpi) = pi;
 
 for i = 1:length(indpi)
