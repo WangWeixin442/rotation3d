@@ -37,7 +37,7 @@ u = q(2:4,:)./normQv;
 theta = wrapToPi(atan2(normQv,q(1,:))*2);
 
 % identity
-indi = find(q(1,:)==1);
+indi = find(abs(abs(q(1,:))-1)<1e-15);
 if ~isempty(indi)
     u(:,indi) = [1;0;0];
     theta(indi) = 0;
