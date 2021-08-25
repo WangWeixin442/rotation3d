@@ -46,7 +46,7 @@ theta = atan2(st,ct);
 ind0 = find(abs(st)<1e-12 & abs(ct-1)<1e-12);
 if ~isempty(ind0)
     theta(ind0) = 0;
-    u(:,ind0) = [1;0;0];
+    u(:,ind0) = repmat([1;0;0],1,length(ind0));
 end
 
 indpi = find(abs(st)<1e-12 & abs(ct+1)<1e-12);
