@@ -43,7 +43,7 @@ u = u./sqrt(sum(u.^2));
 theta = atan2(st,ct);
 
 % special cases
-ind0 = find(abs(st)<1e-12 & abs(ct-1)<1e-12);
+ind0 = find(abs(st)<1e-12 & abs(ct-1)<1e-11);
 if ~isempty(ind0)
     theta(ind0) = 0;
     u(:,ind0) = repmat([1;0;0],1,length(ind0));
